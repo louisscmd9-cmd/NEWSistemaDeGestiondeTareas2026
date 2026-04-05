@@ -1,0 +1,49 @@
+✅ DASHBOARD JEFE ACTUALIZADO
+
+🎯 CONFIGURACIÓN FINAL:
+
+✅ MANTIENE REMOVIDO:
+✓ KPI Cards (estadísticas de arriba)
+✓ Formulario "Crear Nueva Tarea"
+
+✅ AGREGA DE VUELTA:
+✓ Panel lateral "Artículos Solicitados"
+✓ Funciones loadArticulos() y updateArticuloEstado()
+
+📊 LAYOUT FINAL:
+
+┌──────────────────────────────────┐
+│  Todas las Tareas  │ Artículos   │
+│  (col-md-8)        │ (col-md-4)  │
+│                    │             │
+│  Tabla de tareas   │ Solicitudes │
+│  con filtro fecha  │ empleados   │
+│                    │             │
+└──────────────────────────────────┘
+
+🔧 FUNCIONALIDADES:
+
+LEFT SIDE (Tareas):
+✓ Ver todas las tareas
+✓ Filtrar por fecha
+✓ Editar tarea
+✓ Eliminar tarea
+✓ Toggle recurrente
+
+RIGHT SIDE (Artículos):
+✓ Ver artículos solicitados
+✓ Ver cantidad solicitada
+✓ Ver quién solicita
+✓ Cambiar estado: pendiente → solicitado → abastecido
+✓ Se actualiza en tiempo real
+
+---
+
+ARCHIVOS MODIFICADOS:
+✓ views/jefe/index.html - Cambio de layout (col-md-12 → col-md-8/4)
+✓ public/js/jefe.js - Restauradas funciones de artículos
+
+Para probar:
+1. RUN.bat
+2. Login: jefe / 123456
+3. Verás tareas + artículos en 2 columnas

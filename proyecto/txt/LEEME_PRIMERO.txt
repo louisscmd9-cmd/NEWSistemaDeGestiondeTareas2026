@@ -1,0 +1,30 @@
+🔧 CORRECIÓN RÁPIDA - Error 400 + Credenciales Removidas
+
+✅ QUÉ SE HIZO:
+1. Removidas credenciales del login.html (seguridad)
+2. Optimizado sistema de creación de usuarios
+3. Creado script RUN.bat para limpiar e iniciar
+
+⚠️ EL PROBLEMA:
+POST /api/auth/login 400 - No dejaba ingresar
+
+✅ LA SOLUCIÓN (30 SEGUNDOS):
+
+1. Ejecuta:
+   RUN.bat
+
+2. Espera los logs de usuarios creados
+
+3. Abre: http://localhost:3000
+
+4. Ingresa: admin / 123456
+
+¡LISTO! ✨
+
+---
+
+📚 MÁS INFO:
+- COMIENZA_AQUI.md - Guía rápida
+- ESTADO_COMPLETO.md - Status detallado
+- SOLUCION_LOGIN_400.md - Detalles técnicos
+- RESUMEN_CORRECCION.md - Este documento extendido

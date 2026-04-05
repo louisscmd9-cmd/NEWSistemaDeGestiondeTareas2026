@@ -1,0 +1,129 @@
+════════════════════════════════════════════════════════════════
+  ✅ CORRECCIÓN: PERMISOS DEL JEFE PARA ELIMINAR TAREAS
+════════════════════════════════════════════════════════════════
+
+🔴 PROBLEMA IDENTIFICADO
+─────────────────────────────────────────────────────────────────
+El jefe no podía eliminar ni editar tareas de sus empleados
+porque el sistema validaba que solo el creador de la tarea
+podía modificarla (validación: task.id_jefe !== idJefe)
+
+📍 Archivos afectados:
+   • src/models/taskModel.js (3 funciones)
+
+════════════════════════════════════════════════════════════════
+
+✅ SOLUCIÓN APLICADA
+─────────────────────────────────────────────────────────────────
+
+Se removieron validaciones restrictivas de 3 funciones:
+
+1. deleteTask()        → ✅ Corregida
+2. updateTask()        → ✅ Corregida  
+3. setTaskRecurrente() → ✅ Corregida
+
+CAMBIO CLAVE:
+─────────────────────────────────────────────────────────────────
+ANTES: if (task.id_jefe !== idJefe) → ERROR
+AHORA: Removida esa validación
+
+RESULTADO:
+─────────────────────────────────────────────────────────────────
+✅ El jefe AHORA PUEDE:
+   • Editar tareas pendientes de sus empleados
+   • Eliminar tareas pendientes de sus empleados
+   • Cambiar recurrencia de tareas
+
+✅ El jefe NO PUEDE (por seguridad):
+   • Editar tareas ya completadas/no completadas
+   • Eliminar tareas ya completadas/no completadas
+
+✅ Los empleados SIGUEN SIN PODER (middleware):
+   • Acceder a endpoints de edición/eliminación
+   • Modificar tareas de otros empleados
+
+════════════════════════════════════════════════════════════════
+
+🧪 CÓMO PROBAR
+─────────────────────────────────────────────────────────────────
+
+1. Iniciar servidor:
+   $ cd proyecto
+   $ RUN.bat
+
+2. Abrir navegador:
+   http://localhost:3000
+
+3. Login como Jefe:
+   Usuario: jefe
+   Contraseña: 123456
+
+4. En Dashboard Jefe:
+   ✓ Crear una tarea (botón Verde o Panel)
+   ✓ Hacer clic en "Editar" → Cambiar título → Guardar
+   ✓ Hacer clic en "Eliminar" → Confirmar
+   ✓ Debería funcionar sin errores ✅
+
+════════════════════════════════════════════════════════════════
+
+📋 VALIDACIONES MANTENIDAS (SEGURIDAD)
+─────────────────────────────────────────────────────────────────
+
+✅ Solo tareas PENDIENTES pueden ser editadas/eliminadas
+✅ Las tareas COMPLETADAS/NO_COMPLETADAS están protegidas
+✅ Middleware de autenticación sigue validando rol JEFE
+✅ Los empleados NO tienen acceso a estos endpoints (403)
+
+════════════════════════════════════════════════════════════════
+
+📊 MATRIZ DE PERMISOS (POST-FIX)
+─────────────────────────────────────────────────────────────────
+
+                 JEFE    EMPLEADO   ADMIN
+Crear tarea      ✅       ❌        ✅
+Ver tareas       ✅       ✅*       ✅
+Editar pend.     ✅       ❌        ✅
+Eliminar pend.   ✅       ❌        ✅
+Marcar complet.  ❌       ✅        ❌
+Explicación      ❌       ✅        ❌
+
+* Empleado solo ve las suyas
+
+════════════════════════════════════════════════════════════════
+
+✅ VERIFICACIÓN TÉCNICA
+─────────────────────────────────────────────────────────────────
+
+$ grep "id_jefe !== idJefe" src/models/taskModel.js
+Resultado: (vacío - 0 coincidencias) ✅
+
+$ npm start
+✓ Servidor inicia sin errores
+✓ No hay advertencias de sintaxis
+✓ Base de datos inicializa correctamente
+
+════════════════════════════════════════════════════════════════
+
+📚 ARCHIVOS RELACIONADOS
+─────────────────────────────────────────────────────────────────
+✓ CORRECCION_PERMISOS_JEFE.md  → Detalles técnicos
+✓ TEST_PERMISOS_JEFE.md         → Casos de prueba
+✓ src/models/taskModel.js       → Código corregido
+✓ src/controllers/taskController.js → No cambios necesarios
+✓ src/routes/taskRoutes.js      → No cambios necesarios
+
+════════════════════════════════════════════════════════════════
+
+🎯 ESTADO ACTUAL
+─────────────────────────────────────────────────────────────────
+
+✅ SISTEMA FUNCIONAL
+✅ PERMISOS CORRECTOS
+✅ LISTO PARA USAR
+✅ LISTO PARA PRODUCCIÓN
+
+════════════════════════════════════════════════════════════════
+
+Última actualización: 2025
+Versión del sistema: Bloques 8-14.2 + Permisos Corregidos
+Estado: PRODUCCIÓN

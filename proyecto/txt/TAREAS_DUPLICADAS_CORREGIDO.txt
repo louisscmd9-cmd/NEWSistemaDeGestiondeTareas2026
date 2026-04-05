@@ -1,0 +1,30 @@
+🔧 CORRECCIÓN - Tareas Duplicadas
+
+✅ PROBLEMA SOLUCIONADO
+
+El problema era que había 2 DOMContentLoaded listeners en cada archivo:
+- jefe.js → loadTasks() se ejecutaba 2 veces
+- empleado.js → Mismo problema
+
+SOLUCIÓN:
+✓ Consolidé múltiples DOMContentLoaded en 1 solo listener
+✓ Convertí createTask a función (mejor organización)
+✓ Moví todos los event listeners dentro de DOMContentLoaded
+
+RESULTADO:
+✅ Tareas aparecen 1 sola vez (no duplicadas)
+✅ Formulario carga normal
+✅ Sin duplicación al crear tareas
+
+---
+
+ARCHIVOS CORREGIDOS:
+✓ public/js/jefe.js
+✓ public/js/empleado.js
+
+PARA PROBAR:
+1. TEST_FIX_DUPLICADOS.bat
+2. Login: jefe / 123456
+3. Verifica que tareas NO se dupliquen
+
+MÁS DETALLES EN: CORRECCION_TAREAS_DUPLICADAS.md

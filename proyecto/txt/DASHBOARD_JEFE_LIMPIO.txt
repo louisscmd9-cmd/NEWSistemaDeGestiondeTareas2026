@@ -1,0 +1,25 @@
+✅ DASHBOARD JEFE SIMPLIFICADO
+
+❌ REMOVIDO:
+✓ KPI Cards (arriba) - 4 tarjetas de estadísticas
+✓ Panel Lateral (derecha) - Crear tarea + Artículos
+
+✅ RESULTADO:
+✓ Dashboard más limpio
+✓ Tabla de tareas FULL WIDTH
+✓ Interfaz enfocada
+✓ Menos distracciones
+
+🔧 CAMBIOS:
+✓ views/jefe/index.html - Removidos componentes
+✓ public/js/jefe.js - Removidas funciones artículos
+
+🎯 AHORA:
+✓ Solo se ve la tabla "Todas las Tareas"
+✓ Con filtro por fecha
+✓ Acciones: editar, eliminar, marcar recurrente
+
+Para ver cómo quedó:
+1. RUN.bat
+2. Login: jefe / 123456
+3. Observa el nuevo dashboard limpio

@@ -1,0 +1,1 @@
+{"name":"sistema-gestion-tareas","version":"1.0.0","description":"Sistema de Gestión de Tareas con roles de Jefe y Empleado","main":"app.js","scripts":{"start":"node app.js","dev":"nodemon app.js"},"dependencies":{"bcrypt":"^6.0.0","connect-sqlite3":"^0.9.0","express":"^4.18.0","express-session":"^1.17.0","morgan":"^1.10.0","sqlite3":"^5.1.0"}}
