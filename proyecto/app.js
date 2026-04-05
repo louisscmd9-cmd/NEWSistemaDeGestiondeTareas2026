@@ -30,6 +30,11 @@ app.use('/api/tasks', taskRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/articulos', articuloRoutes);
 
+// Redirigir la raíz al login
+app.get('/', (req, res) => {
+  res.redirect('/login');
+});
+
 // Rutas para vistas HTML
 app.get('/login', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'login.html'));
@@ -54,11 +59,6 @@ app.get('/admin', (req, res) => {
     return res.redirect('/login');
   }
   res.sendFile(path.join(__dirname, 'views', 'admin', 'index.html'));
-});
-
-// Ruta raíz redirige a login
-app.get('/', (req, res) => {
-  res.redirect('/login');
 });
 
 // Manejo de errores simples
