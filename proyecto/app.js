@@ -1,4 +1,9 @@
-﻿require('dotenv').config();
+﻿// Cargar variables de entorno (opcional en producción)
+try {
+  require('dotenv').config();
+} catch (e) {
+  // dotenv no instalado en Render, ok - Render inyecta variables directamente
+}
 
 const express = require('express');
 const path = require('path');
