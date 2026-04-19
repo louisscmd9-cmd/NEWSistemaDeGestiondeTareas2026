@@ -1,4 +1,6 @@
-﻿const express = require('express');
+﻿require('dotenv').config();
+
+const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const session = require('./src/config/session');
@@ -9,6 +11,9 @@ const articuloRoutes = require('./src/routes/articuloRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// CLAVE PARA RENDER: Trust proxy (necesario porque Render está detrás de HTTPS proxy)
+app.set('trust proxy', 1);
 
 // Middlewares globales
 app.use(morgan('dev'));

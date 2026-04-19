@@ -14,12 +14,14 @@ if (process.env.DATABASE_URL) {
       tableName: 'session',
       createTableIfMissing: true,
     }),
+    name: 'jacinto.sid',
     secret: process.env.SESSION_SECRET || 'supersecreto123',
     resave: false,
     saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 2,
       httpOnly: true,
+      sameSite: 'lax',
       secure: process.env.NODE_ENV === 'production',
     },
   });
@@ -34,12 +36,14 @@ if (process.env.DATABASE_URL) {
       table: 'sessions',
       concurrentDB: true,
     }),
+    name: 'jacinto.sid',
     secret: process.env.SESSION_SECRET || 'supersecreto123',
     resave: false,
     saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 2,
       httpOnly: true,
+      sameSite: 'lax',
       secure: false,
     },
   });
