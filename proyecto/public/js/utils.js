@@ -122,7 +122,7 @@ function initBootstrapComponents() {
 /**
  * Confirmación segura
  */
-function confirm Deletion(message = '¿Estás seguro de eliminar esto?') {
+function confirmDeletion(message = '¿Estás seguro de eliminar esto?') {
   return new Promise(resolve => {
     if (confirm(message)) {
       resolve(true);
