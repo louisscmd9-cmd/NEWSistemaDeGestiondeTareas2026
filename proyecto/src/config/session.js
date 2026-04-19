@@ -1,13 +1,12 @@
 ﻿const session = require('express-session');
-const path = require('path');
-const SQLiteStore = require('connect-sqlite3')(session);
+const pgPool = require('./postgres');
+const PostgresStore = require('connect-pg-simple')(session);
 
 const sessionConfig = session({
-  store: new SQLiteStore({
-    db: 'sessions.sqlite',
-    dir: path.join(__dirname, '../../'),
-    table: 'sessions',
-    concurrentDB: true,
+  store: new PostgresStore({
+    pool: pgPool,
+    tableName: 'session',
+    createTableIfMissing: true,
   }),
   secret: process.env.SESSION_SECRET || 'supersecreto123',
   resave: false,
@@ -15,7 +14,7 @@ const sessionConfig = session({
   cookie: {
     maxAge: 1000 * 60 * 60 * 2, // 2 horas
     httpOnly: true,
-    secure: false // true solo en HTTPS (producción)
+    secure: process.env.NODE_ENV === 'production',
   },
 });
 
